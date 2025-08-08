@@ -1,4 +1,4 @@
--- Загрузочное окно (красивая версия с полосой)
+-- Загрузочное окно (с поправками)
 local gui = Instance.new("ScreenGui", game:GetService("CoreGui"))
 gui.Name = "LoadingUI"
 gui.ResetOnSpawn = false
@@ -12,7 +12,7 @@ background.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 -- Заголовок
 local title = Instance.new("TextLabel", background)
 title.Size = UDim2.new(1, 0, 0, 60)
-title.Position = UDim2.new(0, 0, 0.4, 0)
+title.Position = UDim2.new(0, 0, 0.38, 0) -- ⬅️ подняли чуть выше
 title.BackgroundTransparency = 1
 title.Text = "Загрузка скрипта..."
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -29,12 +29,20 @@ barBackground.BorderSizePixel = 0
 barBackground.ClipsDescendants = true
 barBackground.AnchorPoint = Vector2.new(0, 0.5)
 
+-- Скругление для фона бара
+local bgCorner = Instance.new("UICorner", barBackground)
+bgCorner.CornerRadius = UDim.new(0, 10)
+
 -- Полоска внутри
 local progressBar = Instance.new("Frame", barBackground)
 progressBar.Size = UDim2.new(0, 0, 1, 0)
 progressBar.Position = UDim2.new(0, 0, 0, 0)
 progressBar.BackgroundColor3 = Color3.fromRGB(0, 170, 255)
 progressBar.BorderSizePixel = 0
+
+-- Скругление для самой полоски
+local barCorner = Instance.new("UICorner", progressBar)
+barCorner.CornerRadius = UDim.new(0, 10)
 
 -- Автор
 local credit = Instance.new("TextLabel", background)
